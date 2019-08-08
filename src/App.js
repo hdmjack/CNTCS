@@ -1,7 +1,9 @@
 import React from "react";
 import faker from "faker";
 import "./App.less";
-import { Layout } from "antd";
+import { Layout, Row, Col } from "antd";
+
+import ContactList from "./components/ContactList";
 
 const { Header, Footer, Content } = Layout;
 
@@ -15,6 +17,7 @@ for (var i = 0; i < 20; i++)
     mobileNumber: faker.phone.phoneNumber(),
     homeNumber: faker.phone.phoneNumber(),
     workNumber: faker.phone.phoneNumber(),
+    email: faker.internet.email(),
     imageUrl: faker.image.imageUrl(null, null, "people", true)
   });
 
@@ -25,7 +28,13 @@ function App() {
     <div>
       <Layout>
         <Header>Header</Header>
-        <Content>Content</Content>
+        <Content>
+          <Row type="flex" justify="center">
+            <Col span={16}>
+              <ContactList contacts={CONTACTS} />
+            </Col>
+          </Row>
+        </Content>
         <Footer>Footer</Footer>
       </Layout>
     </div>

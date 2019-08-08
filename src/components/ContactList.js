@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Skeleton } from "antd";
+import { Avatar, List, Skeleton, Icon } from "antd";
 
 const ContactList = ({ contacts }) => {
   return (
@@ -10,16 +10,25 @@ const ContactList = ({ contacts }) => {
       //   loadMore={loadMore}
       dataSource={contacts}
       renderItem={contact => (
-        <List.Item actions={[<a>edit</a>, <a>more</a>]}>
+        <List.Item
+          itemLayout="vertical"
+          size="large"
+          actions={[<Icon type="delete" />, <a>more</a>]}
+        >
           <Skeleton avatar title={false} loading={contact.loading} active>
             <List.Item.Meta
-              avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+              avatar={<Avatar src={contact.imageUrl} />}
+              title={`${contact.firstName} ${contact.lastName}`}
+              description={
+                <span>
+                  <strong>Mobile: </strong>
+                  {contact.mobileNumber}
+                  &nbsp;&nbsp;
+                  <strong>Email: </strong>
+                  {contact.email}
+                </span>
               }
-              title={<a href="https://ant.design">{contact.name.last}</a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
             />
-            <div>content</div>
           </Skeleton>
         </List.Item>
       )}

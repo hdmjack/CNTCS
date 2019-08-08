@@ -440,7 +440,10 @@ module.exports = function(webpackEnv) {
                     "layout-body-background": "#0c1b2b",
                     "layout-header-background": "#0c1b2b",
                     "border-color-base": "#435261",
-                    "text-color": "#fff"
+                    "text-color": "#fff",
+                    "text-color-secondary": "rgba(255,255,255,0.65)",
+                    "icon-color": "#fff",
+                    "icon-color-hover": "rgba(255,255,255,0.65)"
                   },
                   javascriptEnabled: true
                 }
