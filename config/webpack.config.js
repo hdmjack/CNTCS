@@ -40,7 +40,7 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
-const lessRegex = /\.(scss|less)$/;
+const lessRegex = /\.(less)$/;
 const lessModuleRegex = /\.module\.(less)$/;
 
 // This is the production and development configuration.
@@ -69,7 +69,7 @@ module.exports = function(webpackEnv) {
   const env = getClientEnvironment(publicUrl);
 
   // common function to get style loaders
-  const getStyleLoaders = (cssOptions, preProcessor) => {
+  const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
     const loaders = [
       isEnvDevelopment && require.resolve("style-loader"),
       isEnvProduction && {
@@ -110,7 +110,8 @@ module.exports = function(webpackEnv) {
       loaders.push({
         loader: require.resolve(preProcessor),
         options: {
-          sourceMap: isEnvProduction && shouldUseSourceMap
+          sourceMap: isEnvProduction && shouldUseSourceMap,
+          ...preProcessorOptions
         }
       });
     }
@@ -429,7 +430,11 @@ module.exports = function(webpackEnv) {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap
                 },
-                "less-loader"
+                "less-loader",
+                {
+                  modifyVars: { "@primary-color": "#32cbcb" },
+                  javascriptEnabled: true
+                }
               ),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
