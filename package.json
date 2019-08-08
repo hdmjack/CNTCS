@@ -133,6 +133,7 @@
     ]
   },
   "devDependencies": {
+    "faker": "^4.1.0",
     "husky": ">=1",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
