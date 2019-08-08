@@ -432,7 +432,16 @@ module.exports = function(webpackEnv) {
                 },
                 "less-loader",
                 {
-                  modifyVars: { "@primary-color": "#32cbcb" },
+                  modifyVars: {
+                    "primary-color": "#32cbcb",
+                    "body-background": "#0c1b2b",
+                    "component-background": "#0c1b2b",
+                    "background-color-base": "#0c1b2b",
+                    "layout-body-background": "#0c1b2b",
+                    "layout-header-background": "#0c1b2b",
+                    "border-color-base": "#435261",
+                    "text-color": "#fff"
+                  },
                   javascriptEnabled: true
                 }
               ),
