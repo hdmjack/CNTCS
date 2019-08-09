@@ -80,7 +80,7 @@ const ContactFormItem = ({ contact, fieldName, label, index }) => {
           />
         ) : (
           <span
-            tabindex="0"
+            tabIndex="0"
             onClick={showInput}
             onFocus={showInput}
             className={styles.displayValueWrapper}

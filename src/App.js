@@ -4,6 +4,7 @@ import { Button, Icon, Input, Layout, Row, Col, Tooltip } from "antd";
 
 // COMPONENTS
 import ContactList from "./components/ContactList";
+import AddContactModal from "./components/AddContactModal";
 
 // STYLES
 import styles from "./App.module.less";
@@ -31,6 +32,9 @@ function App() {
 
   const [filteredContacts, setFilteredContacts] = React.useState(CONTACTS);
   const [search, setSearch] = React.useState("");
+  const [modalIsShown, setModalIsShown] = React.useState(false);
+
+  const showModal = () => setModalIsShown(true);
 
   const filterContacts = React.useCallback(
     event => {
@@ -76,7 +80,7 @@ function App() {
                   <Button
                     type="link"
                     icon="plus-square"
-                    onClick={addContact}
+                    onClick={showModal}
                     size="large"
                   />
                 </Tooltip>
@@ -91,6 +95,7 @@ function App() {
           </Col>
         </Row>
       </Content>
+      <AddContactModal visible={modalIsShown} />
     </Layout>
   );
 }
