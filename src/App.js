@@ -23,6 +23,7 @@ for (var i = 0; i < 20; i++)
     homeNumber: faker.phone.phoneNumber(),
     workNumber: faker.phone.phoneNumber(),
     email: faker.internet.email(),
+    address: faker.address.streetAddress(),
     imageUrl: faker.image.imageUrl(null, null, "people", true)
   });
 

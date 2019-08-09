@@ -25,7 +25,7 @@ const ContactForm = ({ contact, updateContact, index }) => (
       index={index}
     />
     <ContactFormItem
-      label="Mobile Numbe"
+      label="Mobile Number"
       fieldName="mobileNumber"
       contact={contact}
       index={index}
@@ -45,6 +45,12 @@ const ContactForm = ({ contact, updateContact, index }) => (
     <ContactFormItem
       label="Email"
       fieldName="email"
+      contact={contact}
+      index={index}
+    />
+    <ContactFormItem
+      label="Address"
+      fieldName="address"
       contact={contact}
       index={index}
     />

@@ -15,6 +15,7 @@ const createEmptyContact = () => ({
   homeNumber: "",
   workNumber: "",
   email: "",
+  address: "",
   imageUrl: ""
 });
 
