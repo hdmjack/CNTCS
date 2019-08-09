@@ -53,8 +53,8 @@ function App() {
     <Layout className={styles.app}>
       <Header>
         <Row type="flex" justify="center">
-          <Col span={18}>
-            <h1>Contacts</h1>
+          <Col span={16}>
+            <h1>CNTCS</h1>
           </Col>
         </Row>
       </Header>

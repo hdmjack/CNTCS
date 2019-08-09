@@ -439,6 +439,7 @@ module.exports = function(webpackEnv) {
                     "background-color-base": "#0c1b2b",
                     "layout-body-background": "#0c1b2b",
                     "layout-header-background": "#0c1b2b",
+                    "layout-header-padding": "0",
                     "border-color-base": "#435261",
                     "text-color": "#fff",
                     "text-color-secondary": "rgba(255,255,255,0.65)",
