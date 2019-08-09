@@ -1,11 +1,11 @@
 import React from "react";
 import faker from "faker";
-import "./App.less";
-import { Layout, Row, Col } from "antd";
+import styles from "./App.module.less";
+import { Button, Layout, Row, Col, Tooltip } from "antd";
 
 import ContactList from "./components/ContactList";
 
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
 
 const CONTACTS = [];
 
@@ -24,20 +24,37 @@ for (var i = 0; i < 20; i++)
 console.log(CONTACTS);
 
 function App() {
+  const deleteContact = () => {};
+  const addContact = () => {};
+
   return (
-    <div>
-      <Layout>
-        <Header>Header</Header>
-        <Content>
-          <Row type="flex" justify="center">
-            <Col span={16}>
-              <ContactList contacts={CONTACTS} />
-            </Col>
-          </Row>
-        </Content>
-        <Footer>Footer</Footer>
-      </Layout>
-    </div>
+    <Layout className={styles.app}>
+      <Header>
+        <Row type="flex" justify="center">
+          <Col span={18}>
+            <h1>Contacts</h1>
+          </Col>
+        </Row>
+      </Header>
+      <Content>
+        <Row type="flex" justify="center">
+          <Tooltip title="Add a contact">
+            <Button
+              className={styles.addContactButton}
+              type="link"
+              icon="plus-square"
+              onClick={addContact}
+              size="large"
+            />
+          </Tooltip>
+        </Row>
+        <Row type="flex" justify="center">
+          <Col span={16}>
+            <ContactList contacts={CONTACTS} deleteContact={deleteContact} />
+          </Col>
+        </Row>
+      </Content>
+    </Layout>
   );
 }
 

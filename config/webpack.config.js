@@ -443,7 +443,10 @@ module.exports = function(webpackEnv) {
                     "text-color": "#fff",
                     "text-color-secondary": "rgba(255,255,255,0.65)",
                     "icon-color": "#fff",
-                    "icon-color-hover": "rgba(255,255,255,0.65)"
+                    "icon-color-hover": "rgba(255,255,255,0.65)",
+                    "collapse-content-bg": "#0c1b2b",
+                    "heading-color": "white",
+                    "shadow-color": "rgba(0, 0, 0, 0.65)"
                   },
                   javascriptEnabled: true
                 }
