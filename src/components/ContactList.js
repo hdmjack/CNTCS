@@ -59,43 +59,48 @@ const ContactListItem = ({ contact, deleteContact, index }) => {
           }
         >
           <Form layout="inline">
-            <Row>
-              <ContactFormItem
-                contact={contact}
-                fieldName="firstName"
-                label="First Name"
-                index={index}
-              />
-              <Col span={12}>
-                <Form.Item label="Last Name">
-                  <Input value={contact.lastName} />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col span={12}>
-                <Form.Item label="Mobile Number">
-                  <Input value={contact.mobileNumber} />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="Home Number">
-                  <Input value={contact.homeNumber} />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col span={12}>
-                <Form.Item label="Work Number">
-                  <Input value={contact.workNumber} />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="Email">
-                  <Input value={contact.email} />
-                </Form.Item>
-              </Col>
-            </Row>
+            <ContactFormItem
+              label="First Name"
+              fieldName="firstName"
+              contact={contact}
+              index={index}
+            />
+            <ContactFormItem
+              label="Last Name"
+              fieldName="lastName"
+              contact={contact}
+              index={index}
+            />
+            <ContactFormItem
+              label="Job Title"
+              fieldName="jobTitle"
+              contact={contact}
+              index={index}
+            />
+            <ContactFormItem
+              label="Mobile Numbe"
+              fieldName="mobileNumber"
+              contact={contact}
+              index={index}
+            />
+            <ContactFormItem
+              label="Home Number"
+              fieldName="homeNumber"
+              contact={contact}
+              index={index}
+            />
+            <ContactFormItem
+              label="Work Number"
+              fieldName="workNumber"
+              contact={contact}
+              index={index}
+            />
+            <ContactFormItem
+              label="Email"
+              fieldName="email"
+              contact={contact}
+              index={index}
+            />
           </Form>
         </Panel>
       </Collapse>

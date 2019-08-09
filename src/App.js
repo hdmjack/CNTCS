@@ -17,6 +17,7 @@ for (var i = 0; i < 20; i++)
     id: i,
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
+    jobTitle: faker.name.jobTitle(),
     mobileNumber: faker.phone.phoneNumber(),
     homeNumber: faker.phone.phoneNumber(),
     workNumber: faker.phone.phoneNumber(),
