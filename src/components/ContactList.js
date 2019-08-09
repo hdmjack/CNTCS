@@ -190,7 +190,12 @@ const ContactFormItem = ({ contact, fieldName, label, index }) => {
             onBlur={hideInput}
           />
         ) : (
-          <span onClick={showInput} className={styles.displayValueWrapper}>
+          <span
+            tabindex="0"
+            onClick={showInput}
+            onFocus={showInput}
+            className={styles.displayValueWrapper}
+          >
             <span className={hasValue ? "" : "noValue"}>{displayValue}</span>
             <Icon type="edit" />
           </span>
