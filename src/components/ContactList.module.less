@@ -26,5 +26,40 @@
       height: 1.3em;
       width: 1.3em;
     }
+
+    .ant-form-item {
+      display: flex;
+    }
+
+    .ant-form-item-control-wrapper {
+      flex-grow: 1;
+    }
+  }
+}
+
+.noResults {
+  :global .ant-result-icon > .anticon {
+    color: white;
+  }
+}
+
+.displayValueWrapper {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-left: 0.85em;
+
+  span {
+    flex-grow: 1;
+  }
+
+  :global .anticon {
+    visibility: hidden;
+  }
+
+  &:hover {
+    :global .anticon {
+      visibility: visible;
+    }
   }
 }

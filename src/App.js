@@ -1,9 +1,12 @@
 import React from "react";
 import faker from "faker";
-import styles from "./App.module.less";
-import { Button, Layout, Row, Col, Tooltip } from "antd";
+import { Button, Icon, Input, Layout, Row, Col, Tooltip } from "antd";
 
+// COMPONENTS
 import ContactList from "./components/ContactList";
+
+// STYLES
+import styles from "./App.module.less";
 
 const { Header, Content } = Layout;
 
@@ -21,11 +24,30 @@ for (var i = 0; i < 20; i++)
     imageUrl: faker.image.imageUrl(null, null, "people", true)
   });
 
-console.log(CONTACTS);
-
 function App() {
   const deleteContact = () => {};
   const addContact = () => {};
+
+  const [filteredContacts, setFilteredContacts] = React.useState(CONTACTS);
+  const [search, setSearch] = React.useState("");
+
+  const filterContacts = React.useCallback(
+    event => {
+      const { value } = event.currentTarget;
+
+      setSearch(value);
+
+      const contacts = CONTACTS.filter(
+        contact =>
+          contact.firstName.toLowerCase().includes(value) ||
+          contact.lastName.toLowerCase().includes(value) ||
+          contact.email.toLowerCase().includes(value)
+      );
+
+      setFilteredContacts(contacts);
+    },
+    [CONTACTS, setFilteredContacts]
+  );
 
   return (
     <Layout className={styles.app}>
@@ -38,19 +60,33 @@ function App() {
       </Header>
       <Content>
         <Row type="flex" justify="center">
-          <Tooltip title="Add a contact">
-            <Button
-              className={styles.addContactButton}
-              type="link"
-              icon="plus-square"
-              onClick={addContact}
-              size="large"
-            />
-          </Tooltip>
-        </Row>
-        <Row type="flex" justify="center">
           <Col span={16}>
-            <ContactList contacts={CONTACTS} deleteContact={deleteContact} />
+            <Row>
+              <Col span={6}>
+                <Input
+                  prefix={<Icon type="search" />}
+                  placeholder="Search..."
+                  onChange={filterContacts}
+                  value={search}
+                />
+              </Col>
+              <Col className={styles.addContactWrapper} span={2} push={5}>
+                <Tooltip title="Add a contact">
+                  <Button
+                    type="link"
+                    icon="plus-square"
+                    onClick={addContact}
+                    size="large"
+                  />
+                </Tooltip>
+              </Col>
+            </Row>
+            <Row>
+              <ContactList
+                contacts={filteredContacts}
+                deleteContact={deleteContact}
+              />
+            </Row>
           </Col>
         </Row>
       </Content>
