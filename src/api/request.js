@@ -1,6 +1,12 @@
 // Fake API provider
 import faker from "faker";
 
+/**********************************************************/
+/* A mock promise-based api, with random latency times
+/* and an initial random contact loadout.
+/**********************************************************/
+
+// Generate a random number of fake contacts
 const generateContacts = () => {
   const contacts = [];
 

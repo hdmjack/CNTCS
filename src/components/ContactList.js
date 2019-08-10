@@ -94,12 +94,13 @@ const ContactListItem = ({
 };
 
 const ContactListItemHeader = ({ contact, deleteContact, showDetails }) => {
-  // Required to stop misfires on the parent component
   const doNothing = e => {
+    // Required to stop misfires on the parent component
     e.stopPropagation();
   };
 
   const confirmDelete = e => {
+    // Required to stop misfires on the parent component
     e.stopPropagation();
     deleteContact(contact.id);
   };
