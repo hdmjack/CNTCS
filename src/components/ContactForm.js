@@ -11,53 +11,67 @@ const ContactForm = ({ contact, updateContact, index }) => (
       fieldName="firstName"
       contact={contact}
       index={index}
+      updateContact={updateContact}
     />
     <ContactFormItem
       label="Last Name"
       fieldName="lastName"
       contact={contact}
       index={index}
+      updateContact={updateContact}
     />
     <ContactFormItem
       label="Job Title"
       fieldName="jobTitle"
       contact={contact}
       index={index}
+      updateContact={updateContact}
     />
     <ContactFormItem
       label="Mobile Number"
       fieldName="mobileNumber"
       contact={contact}
       index={index}
+      updateContact={updateContact}
     />
     <ContactFormItem
       label="Home Number"
       fieldName="homeNumber"
       contact={contact}
       index={index}
+      updateContact={updateContact}
     />
     <ContactFormItem
       label="Work Number"
       fieldName="workNumber"
       contact={contact}
       index={index}
+      updateContact={updateContact}
     />
     <ContactFormItem
       label="Email"
       fieldName="email"
       contact={contact}
       index={index}
+      updateContact={updateContact}
     />
     <ContactFormItem
       label="Address"
       fieldName="address"
       contact={contact}
       index={index}
+      updateContact={updateContact}
     />
   </Form>
 );
 
-const ContactFormItem = ({ contact, fieldName, label, index }) => {
+const ContactFormItem = ({
+  contact,
+  fieldName,
+  label,
+  index = null,
+  updateContact
+}) => {
   const inputRef = React.useRef();
   const [inputShown, setInputShown] = React.useState(false);
 
@@ -73,6 +87,7 @@ const ContactFormItem = ({ contact, fieldName, label, index }) => {
   const fieldValue = contact[fieldName];
   const hasValue = fieldValue !== "";
   const displayValue = hasValue ? fieldValue : "Click to edit...";
+  const name = index !== null ? `${index}.${fieldName}` : fieldName;
 
   return (
     <Col span={12}>
@@ -80,8 +95,9 @@ const ContactFormItem = ({ contact, fieldName, label, index }) => {
         {inputShown ? (
           <Input
             ref={inputRef}
-            name={`${index}.${fieldName}`}
+            name={name}
             value={fieldValue}
+            onChange={updateContact}
             onBlur={hideInput}
           />
         ) : (

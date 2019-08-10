@@ -19,19 +19,38 @@ const createEmptyContact = () => ({
   imageUrl: ""
 });
 
-const AddContactModal = ({ visible, cancelAddContact, addContact }) => {
+const AddContactModal = ({ visible, onAdd, onCancel }) => {
   const [contact, setContact] = React.useState(createEmptyContact());
+
+  const handleCancel = () => {
+    setContact(createEmptyContact());
+    onCancel();
+  };
+
+  const handleUpdateContact = ({ currentTarget }) => {
+    const updatedContact = {
+      ...contact,
+      [currentTarget.name]: currentTarget.value
+    };
+
+    setContact(updatedContact);
+  };
+
+  const handleOk = () => {
+    onAdd(contact);
+    setContact(createEmptyContact());
+  };
 
   return (
     <Modal
       className={styles.addContactModal}
       title="Add a New Contact"
       visible={visible}
-      onOk={addContact}
-      onCancel={cancelAddContact}
+      onOk={handleOk}
+      onCancel={handleCancel}
     >
       <Row>
-        <ContactForm contact={contact} updateContact={setContact} />
+        <ContactForm contact={contact} updateContact={handleUpdateContact} />
       </Row>
     </Modal>
   );

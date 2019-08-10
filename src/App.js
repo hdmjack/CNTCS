@@ -11,7 +11,7 @@ import styles from "./App.module.less";
 
 const { Header, Content } = Layout;
 
-const CONTACTS = [];
+let CONTACTS = [];
 
 for (var i = 0; i < 20; i++)
   CONTACTS.push({
@@ -29,13 +29,20 @@ for (var i = 0; i < 20; i++)
 
 function App() {
   const deleteContact = () => {};
-  const addContact = () => {};
+  const addContact = newContact => {
+    CONTACTS = [newContact, ...CONTACTS];
+  };
 
   const [filteredContacts, setFilteredContacts] = React.useState(CONTACTS);
   const [search, setSearch] = React.useState("");
   const [modalIsShown, setModalIsShown] = React.useState(false);
 
   const showModal = () => setModalIsShown(true);
+  const hideModal = () => setModalIsShown(false);
+  const onAdd = newContact => {
+    addContact(newContact);
+    hideModal();
+  };
 
   const filterContacts = React.useCallback(
     event => {
@@ -96,7 +103,11 @@ function App() {
           </Col>
         </Row>
       </Content>
-      <AddContactModal visible={modalIsShown} />
+      <AddContactModal
+        visible={modalIsShown}
+        onCancel={hideModal}
+        onAdd={onAdd}
+      />
     </Layout>
   );
 }
