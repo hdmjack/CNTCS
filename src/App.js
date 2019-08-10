@@ -1,5 +1,4 @@
 import React from "react";
-
 import { message, Button, Icon, Input, Layout, Row, Col, Tooltip } from "antd";
 
 // API
@@ -15,7 +14,6 @@ import styles from "./App.module.less";
 const { Header, Content } = Layout;
 
 function App() {
-  // STATE
   const [contacts, setContacts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [search, setSearch] = React.useState("");
@@ -41,7 +39,6 @@ function App() {
   const hideModal = () => setModalIsShown(false);
 
   const handleAdd = async newContact => {
-    setLoading(true);
     const hide = message.loading("Creating contact...", 0);
     hideModal();
 
@@ -70,7 +67,6 @@ function App() {
   };
 
   const handleDelete = async index => {
-    setLoading(true);
     const hide = message.loading("Saving changes...", 0);
     const newContacts = [...contacts];
 
@@ -81,18 +77,15 @@ function App() {
     await deleteContact(contactToDelete.id);
 
     hide();
-    setLoading(false);
   };
 
   const handleSaveContact = async index => {
-    setLoading(true);
     const hide = message.loading("Saving changes...", 0);
 
     const contactToSave = contacts[index];
     await updateContact(contactToSave);
 
     hide();
-    setLoading(false);
   };
 
   // CALLBACKS
