@@ -1,5 +1,15 @@
 # CNTCS
 
+## Quickstart
+
+Install [Yarn](https://yarnpkg.com/en/docs/install).
+
+In the project directory:
+
+`yarn`
+
+`yarn start`
+
 ## Methodology
 
 I opted for a modern tech stack (Babel, React, Async/Await) with minimal dependencies, favoring stable libs over bleeding-edge ones. I chose
