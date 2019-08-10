@@ -18,19 +18,37 @@ import styles from "./ContactList.module.less";
 
 const { Panel } = Collapse;
 
-const ContactList = ({ contacts, deleteContact }) => {
-  return contacts.length ? (
-    <List
-      dataSource={contacts}
-      renderItem={(contact, index) => (
-        <ContactListItem
-          contact={contact}
-          deleteContact={deleteContact}
-          index={index}
-        />
-      )}
-    />
-  ) : (
+const ContactList = ({
+  contacts,
+  loading,
+  deleteContact,
+  updateContact,
+  saveContact
+}) => {
+  if (contacts.length) {
+    return (
+      <List
+        dataSource={contacts}
+        renderItem={(contact, index) => (
+          <ContactListItem
+            contact={contact}
+            deleteContact={deleteContact}
+            updateContact={updateContact}
+            saveContact={saveContact}
+            index={index}
+          />
+        )}
+      />
+    );
+  }
+
+  if (loading) {
+    return (
+      <Result className={styles.noResults} icon={<Icon type="ellipsis" />} />
+    );
+  }
+
+  return (
     <Result
       className={styles.noResults}
       icon={<Icon type="frown" />}
@@ -39,7 +57,13 @@ const ContactList = ({ contacts, deleteContact }) => {
   );
 };
 
-const ContactListItem = ({ contact, deleteContact, updateContact, index }) => {
+const ContactListItem = ({
+  contact,
+  deleteContact,
+  updateContact,
+  saveContact,
+  index
+}) => {
   const [isOpen, setOpen] = React.useState(false);
 
   const onClickOpen = () => {
@@ -60,6 +84,7 @@ const ContactListItem = ({ contact, deleteContact, updateContact, index }) => {
           <ContactForm
             contact={contact}
             updateContact={updateContact}
+            saveContact={saveContact}
             index={index}
           />
         </Panel>

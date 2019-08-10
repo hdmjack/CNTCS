@@ -36,8 +36,8 @@ const AddContactModal = ({ visible, onAdd, onCancel }) => {
     setContact(updatedContact);
   };
 
-  const handleOk = () => {
-    onAdd(contact);
+  const handleOk = async () => {
+    await onAdd({ ...contact });
     setContact(createEmptyContact());
   };
 

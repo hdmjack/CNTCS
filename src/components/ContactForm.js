@@ -4,14 +4,15 @@ import { Col, Icon, Input, Form } from "antd";
 // STYLES
 import styles from "./ContactForm.module.less";
 
-const ContactForm = ({ contact, updateContact, index }) => (
-  <Form className={styles.ContactForm} layout="inline">
+const ContactForm = ({ contact, updateContact, saveContact, index }) => (
+  <Form className={styles.contactForm} layout="inline">
     <ContactFormItem
       label="First Name"
       fieldName="firstName"
       contact={contact}
       index={index}
       updateContact={updateContact}
+      saveContact={saveContact}
     />
     <ContactFormItem
       label="Last Name"
@@ -19,6 +20,7 @@ const ContactForm = ({ contact, updateContact, index }) => (
       contact={contact}
       index={index}
       updateContact={updateContact}
+      saveContact={saveContact}
     />
     <ContactFormItem
       label="Job Title"
@@ -26,6 +28,7 @@ const ContactForm = ({ contact, updateContact, index }) => (
       contact={contact}
       index={index}
       updateContact={updateContact}
+      saveContact={saveContact}
     />
     <ContactFormItem
       label="Mobile Number"
@@ -33,6 +36,7 @@ const ContactForm = ({ contact, updateContact, index }) => (
       contact={contact}
       index={index}
       updateContact={updateContact}
+      saveContact={saveContact}
     />
     <ContactFormItem
       label="Home Number"
@@ -40,6 +44,7 @@ const ContactForm = ({ contact, updateContact, index }) => (
       contact={contact}
       index={index}
       updateContact={updateContact}
+      saveContact={saveContact}
     />
     <ContactFormItem
       label="Work Number"
@@ -47,6 +52,7 @@ const ContactForm = ({ contact, updateContact, index }) => (
       contact={contact}
       index={index}
       updateContact={updateContact}
+      saveContact={saveContact}
     />
     <ContactFormItem
       label="Email"
@@ -54,6 +60,7 @@ const ContactForm = ({ contact, updateContact, index }) => (
       contact={contact}
       index={index}
       updateContact={updateContact}
+      saveContact={saveContact}
     />
     <ContactFormItem
       label="Address"
@@ -61,6 +68,7 @@ const ContactForm = ({ contact, updateContact, index }) => (
       contact={contact}
       index={index}
       updateContact={updateContact}
+      saveContact={saveContact}
     />
   </Form>
 );
