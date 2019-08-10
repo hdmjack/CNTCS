@@ -78,7 +78,7 @@ function App() {
 
     setContacts(newContacts);
 
-    await updateContact(contactToDelete);
+    await deleteContact(contactToDelete.id);
 
     hide();
     setLoading(false);
